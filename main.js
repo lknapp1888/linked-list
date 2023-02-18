@@ -61,6 +61,23 @@ const LinkedList = function() {
         return listPointer;
     }
 
+    this.pop = () => {
+        let listPointer = this.head;
+        while (listPointer.nextNode.nextNode !== null) {
+            listPointer = listPointer.nextNode;
+        }
+        listPointer.nextNode = null;
+    }
+
+    this.contains = (value) => {
+        let listPointer = this.head;
+        while (listPointer.value !== value) {
+            if (listPointer.nextNode === null) return false;
+            listPointer = listPointer.nextNode;
+        }
+        return true;
+    }
+
   };
 
 const newList = new LinkedList();
@@ -69,7 +86,6 @@ const Node = function(value = null) {
     this.value = value;
     this.nextNode = null;
     this.changeVal = (val) => {
-        // check, may be issue with the use of 'this' due to being in function/arrow function
         this.value = val;
     }
 };
@@ -78,8 +94,15 @@ newList.append('Lewis')
 newList.append('Fraser')
 newList.append('chrissie')
 newList.prepend('ronaldo')
-console.log(newList.getHead())
-console.log(newList.size())
-console.log(newList.getTail())
-console.log(newList.at(2))
+// newList.pop()
+// console.log(newList.getHead())
+// console.log(newList.getTail())
+// console.log(newList.size())
+// console.log(newList.getTail())
+// console.log(newList.at(2))
+
+console.log(newList.contains('ronaldo'))
+
+
+
 

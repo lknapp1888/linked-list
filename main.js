@@ -53,6 +53,14 @@ const LinkedList = function() {
         return listPointer;
     }
 
+    this.at = (index) => {
+        let listPointer = this.head;
+        for (let i = 0; i < index; i++) {
+            listPointer = listPointer.nextNode;
+        }
+        return listPointer;
+    }
+
   };
 
 const newList = new LinkedList();
@@ -73,4 +81,5 @@ newList.prepend('ronaldo')
 console.log(newList.getHead())
 console.log(newList.size())
 console.log(newList.getTail())
+console.log(newList.at(2))
 

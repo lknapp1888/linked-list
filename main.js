@@ -24,7 +24,17 @@ const LinkedList = function() {
             listPointer = listPointer.nextNode;
         }
         listPointer.nextNode = newNode;
+    }
 
+    this.prepend = (val) => {
+        const newNode = new Node(val);
+        this.listLength++;
+        if (this.head === null) {
+            this.head = newNode;
+            return;
+        }
+        newNode.nextNode = this.head;
+        this.head = newNode;
     }
 
     this.printLen = () => {
@@ -50,7 +60,7 @@ const Node = function(value = null) {
 newList.append('Lewis')
 newList.append('Fraser')
 newList.append('chrissie')
-newList.append('ronaldo')
+newList.prepend('ronaldo')
 newList.printList()
 newList.printLen()
 

@@ -67,6 +67,7 @@ const LinkedList = function() {
             listPointer = listPointer.nextNode;
         }
         listPointer.nextNode = null;
+        this.listLength--;
     }
 
     this.contains = (value) => {
@@ -78,6 +79,30 @@ const LinkedList = function() {
         return true;
     }
 
+    this.find = (value) => {
+        //returns the index number of the value if it exists
+        let listPointer = this.head;
+        const len = this.listLength;
+        for (let i = 0; i < len; i++) {
+            if (listPointer.value !== value) {
+                listPointer = listPointer.nextNode;
+                continue;
+            }
+            return i;
+        }
+        return null;
+    }
+
+    this.toString = () => {
+        let returnString = '';
+        let listPointer = this.head;
+        while (listPointer.nextNode !== null) {
+            returnString += `( ${listPointer.value} ) -> `;
+            listPointer = listPointer.nextNode;
+        }
+        returnString += `( ${listPointer.value} ) -> null`;
+        return returnString;
+    }
   };
 
 const newList = new LinkedList();
@@ -97,11 +122,13 @@ newList.prepend('ronaldo')
 // newList.pop()
 // console.log(newList.getHead())
 // console.log(newList.getTail())
-// console.log(newList.size())
+console.log(newList.size())
 // console.log(newList.getTail())
 // console.log(newList.at(2))
 
 console.log(newList.contains('ronaldo'))
+console.log(newList.find('Fraser'))
+console.log(newList.toString())
 
 
 

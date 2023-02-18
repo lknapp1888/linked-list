@@ -37,13 +37,22 @@ const LinkedList = function() {
         this.head = newNode;
     }
 
-    this.printLen = () => {
-        console.log(this.listLength)
+    this.size = () => {
+        return this.listLength
     }
 
-    this.printList = () => {
-        console.log(this.head)
+    this.getHead = () => {
+        return this.head
     }
+
+    this.getTail = () => {
+        let listPointer = this.head;
+        while (listPointer.nextNode !== null) {
+            listPointer = listPointer.nextNode;
+        }
+        return listPointer;
+    }
+
   };
 
 const newList = new LinkedList();
@@ -61,6 +70,7 @@ newList.append('Lewis')
 newList.append('Fraser')
 newList.append('chrissie')
 newList.prepend('ronaldo')
-newList.printList()
-newList.printLen()
+console.log(newList.getHead())
+console.log(newList.size())
+console.log(newList.getTail())
 
